@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.26.0",
+    "prismjs": "^1.29.0",
+    "sass": "^1.53.0",
+    "nuxt": "npm:nuxt3@latest",
+    "vue-class-component": "^8.0.0-rc.1",
+    "vue-property-decorator": "^10.0.0-rc.3"
+  }
+}

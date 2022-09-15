@@ -1,0 +1,71 @@
+html, body{
+    margin: 0;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 300;
+}
+
+html,body,#__layout, #__layout > div{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    background: $background-light;
+    padding-top: 5rem;
+    flex: 1;
+}
+main, main > div{
+    & > header, article, section {
+        z-index: 1;
+        overflow-x: hidden;
+    }
+    & > article:first-of-type{
+        padding-top: 2em;
+    }
+}
+
+article{
+    color:$text;
+    background:$background-light;
+    padding: 0;
+    overflow: auto;
+    & > *:first-child {
+        margin-top: 1em;
+    }
+    & > section {
+        max-width: 70rem;
+        margin: 0 auto;
+        padding: 0 2em;
+        width: 100%;
+
+        & > *:first-child {
+            margin-top: 1em;
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color:$secondary;
+    transition: 0.25s;
+    cursor: pointer;
+}
+input{
+    border: none;
+    background: none;
+}
+
+/**
+ * Simple css config for content and text
+ */
+.common-content{
+    margin-top: 1em;
+}
+.common-text{
+    line-height: 1.8em;
+    margin: 0;
+}

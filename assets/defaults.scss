@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+:root{
+    overflow-x: hidden;
+    font-size: 0.9rem;
+
+    --primary: #2ad1aa;
+    --secondary: #489ee4;
+    --text: #444444;
+
+    --background-light: #ffffff;
+    --background-medium: #f0f0f0;
+    --background-dark: #eaeaea;
+
+    --radius-small: 0.2rem;
+    --radius-medium: 0.4rem;
+    --radius-large: 0.8rem;
+
+    --primary: #2ad1aa;
+    --primary-border: #23a788;
+    --primary-active: #23a788;
+    --primary-border-active: #1d8f74;
+
+    --button: #ffffff;
+    --button-border: #dbdbdb;
+    --button-active: #e0e0e0;
+    --button-border-active: #c2c2c2;
+}
+
+/**
+ * This code scales the site based on height sizes
+ * Therefor any size should either be based on its parent, or on a view height (vh)
+ */
+@media only screen and (max-height:800px){
+    :root{
+        font-size: 14px !important;
+    }
+}
