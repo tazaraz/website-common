@@ -32,8 +32,8 @@ export default class Url extends Vue {
         const config = useRuntimeConfig();
 
         // If we want to go to the root domain add a http(s) to the url to ensure redirect
-        if (this.toRoot && window.location.hostname !== config.DOMAIN){
-            this.url = config.PROTOCOL + config.DOMAIN;
+        if (this.toRoot && window.location.hostname !== config.public.DOMAIN){
+            this.url = config.public.PROTOCOL + config.public.DOMAIN;
         }
 
         // Add the location to the url
