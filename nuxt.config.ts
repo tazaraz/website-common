@@ -29,7 +29,6 @@ export default {
         dirs: [
             '~/components',
             '~/common/components',
-            // {path: '~/common/components', global: true, pathPrefix: false},
         ]
     },
 
@@ -47,6 +46,6 @@ export default {
                     additionalData: '@import "@/common/assets/variables.scss";'
                 }
             }
-        }
+        },
     }
 } as NuxtConfig
