@@ -156,20 +156,14 @@ $item-min-width: 10rem;
     }
 }
 
-// @media only screen and (max-width: 600px){
-//     .common-list.grid{
-//         grid-template-columns: 50% 50%;
-//         padding:0;
-//     }
-//     .common-list.grid li{
-//         padding:2em;
-//         text-align: center;
-//     }
-// }
-// @media only screen and (max-width: 450px){
-//     .common-list.grid{
-//         grid-template-columns: 100%;
-//         padding:0;
-//     }
-// }
+@media only screen and (max-width: 600px){
+    .common-list.grid{
+        grid-template-columns: 100%;
+        padding:0;
+    }
+    .common-list.grid li{
+        padding:2em;
+        text-align: center;
+    }
+}
 </style>
