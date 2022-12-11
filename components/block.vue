@@ -6,8 +6,7 @@
         </header>
         <div class="block-text" v-html="text"></div>
         <footer v-if="url !='' && urltext != ''">
-            <nuxt-link v-if="!externalUrl(url)" :to="url" :target="urltarget" v-html="urltext"></nuxt-link>
-            <a         v-else :href="url" :target="urltarget" v-html="urltext"></a>
+            <url :to="url" :target="urltarget" :direct="urldirect">{{urltext}}</url>
         </footer>
     </li>
 </template>
@@ -23,6 +22,7 @@ export default class Block extends Vue {
     @Prop({default:""}) url!: string;
     @Prop({default:""}) urltext!: string;
     @Prop({default:""}) urltarget!: string;
+    @Prop({default:""}) urldirect!: boolean;
     @Prop({default:""}) image!: string;
 
     externalUrl = externalUrl
