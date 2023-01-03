@@ -72,7 +72,7 @@ export default class Header extends Vue {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 nav{
     z-index: 10;
     padding: 1rem;
