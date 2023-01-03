@@ -17,8 +17,8 @@ import {Vue, Options, Prop} from 'vue-property-decorator';
 export default class Button extends Vue {
     @Prop() primary: string | undefined
 
-    @Prop({default: ""}) value: string | undefined
-    @Prop({default:""}) type!: string
+    @Prop({default: ""}) value!: string | undefined
+    @Prop({default: ""}) type!: string
 
     @Prop({default: ""}) to!: string;
     @Prop() classes!: string;
@@ -31,10 +31,7 @@ export default class Button extends Vue {
 
     prim = ""
 
-    created(){
-        if (this.primary !== undefined)
-            (this.$parent as any).primary.push(this.primary)
-
+    beforeMount(){
         // If <Button primary text=""..../>
         // this.primary will be <empty string> instead of undefined
         if (this.primary !== undefined)
@@ -60,21 +57,21 @@ input.common-button {
     &:not(.primary) {
         color: $primary;
         background: $button;
-        border: $button-border solid 0.15em;
+        // border: $button-border solid 0.15em;
 
         &:hover {
             background: $button-active;
-            border: $button-border-active solid 0.15em;
+            // border: $button-border-active solid 0.15em;
         }
     }
     &.primary {
         color: white;
         background: $primary;
-        border: $primary-border solid 0.15em;
+        // border: $primary-border solid 0.15em;
 
         &:hover {
             background: $primary-active;
-            border: $primary-border-active solid 0.15em;
+            // border: $primary-border-active solid 0.15em;
         }
     }
 }
