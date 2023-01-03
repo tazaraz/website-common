@@ -4,7 +4,7 @@ html, body{
     font-weight: 300;
 }
 
-html,body,#__layout, #__layout > div{
+html,body,#__layout, #__layout > div, #__nuxt > div{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -37,6 +37,7 @@ article{
         margin: 0 auto;
         padding: 0 2em;
         width: 100%;
+        background: inherit;
 
         & > *:first-child {
             margin-top: 1em;
