@@ -1,8 +1,8 @@
 <template>
-    <section class="common-container common-back-link">
-        <nuxt-link v-if="url !== ''" :to="url">&#8592; <slot></slot></nuxt-link>
-        <a v-else @click="back()">&#8592; <slot></slot></a>
-    </section>
+    <url class="back" :to="to" @click="back">
+        <i>&#8592;</i>
+        <span><slot></slot></span>
+    </url>
 </template>
 
 <script lang="ts">
@@ -10,16 +10,32 @@ import {Vue, Options, Prop} from 'vue-property-decorator';
 
 @Options({})
 export default class Back extends Vue {
-    @Prop({default:''}) url!: string;
+    @Prop({default:''}) to!: string;
 
     back(){
-        history.back();
+        if (this.to === '')
+            history.back();
     }
 }
 </script>
 
 <style lang="scss">
-.common-back-link > a:hover{
-    color: $primary;
+.back {
+    display: flex;
+    align-items: center;
+
+    i {
+        font-size: 120%;
+        padding: 0 0.5rem 4% 0.6rem;
+    }
+
+    &:hover {
+        color: $primary;
+        text-decoration: none !important;
+
+        span {
+            text-decoration: underline;
+        }
+    }
 }
 </style>
