@@ -10,7 +10,9 @@
 import {Vue, Options, Prop, Emit} from 'vue-property-decorator';
 import { DropdownEvent } from '../events';
 
-@Options({})
+@Options({
+    emits: ['click', 'close']
+})
 export default class Dropdown extends Vue {
     @Prop() id: string | undefined
 
@@ -208,13 +210,19 @@ export default class Dropdown extends Vue {
 
 <style lang="scss">
 .dropdown {
-    height: 2.3rem;
     position: relative;
     display: inline-block;
     font-size: 105%;
+    background-color: $background-dark;
+    -webkit-box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px $radius-small rgba(0,0,0,.08);
+    box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px $radius-small rgba(0,0,0,.08);
+    border-radius: $radius-small;
 
     &.open {
         position: absolute;
+        ul {
+            display: unset;
+        }
     }
 
     ul {
@@ -223,12 +231,14 @@ export default class Dropdown extends Vue {
         max-height: 29rem;
         position: absolute;
         white-space: nowrap;
-        background-color: $background-dark;
-
         list-style-type: none;
+        display: contents;
+
+        background-color: $background-dark;
         -webkit-box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px $radius-small rgba(0,0,0,.08);
         box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px $radius-small rgba(0,0,0,.08);
         border-radius: $radius-small;
+
         /* transition: 0.4s; */
 
         &.open {
@@ -258,22 +268,11 @@ export default class Dropdown extends Vue {
 
     li {
         width: 100%;
-        height: 2.3rem;
         padding: 0.5rem 3rem 0.5rem 0.8rem;
         font-size: 90%;
         font-weight: 500;
         color: $primary;
         cursor: pointer;
-
-        /* Only change the top and bottom radius of the respective li's */
-        &:first-child {
-            border-top-left-radius: $radius-small;
-            border-top-right-radius: $radius-small;
-        }
-        &:last-child {
-            border-bottom-left-radius: $radius-small;
-            border-bottom-right-radius: $radius-small;
-        }
     }
 }
 </style>
