@@ -1,22 +1,18 @@
 <template>
-    <li v-if="url !== ''">
-        <url v-if="image == ''" :to="url" :target="target" :class="cursor" :direct="direct">
-            <header>{{title}}</header>
-            <footer><slot></slot></footer>
-        </url>
-        <url v-else :to="url" :target="target" :class="cursor" :direct="direct">
-            <img :src="image"/>
-            <header class="list-title">{{title}}</header>
+    <li v-if="to !== ''">
+        <url :to="to" :target="target" :class="cursor" :direct="direct">
+            <img v-if="image != ''" :src="image"/>
+            <span>
+                <header>{{title}}</header>
+                <footer><slot></slot></footer>
+            </span>
         </url>
     </li>
-    <li v-else>
-        <span v-if="image == ''" :class="cursor">
+    <li v-else :class="cursor">
+        <img v-if="image != ''" :src="image"/>
+        <span>
             <header>{{title}}</header>
             <footer><slot></slot></footer>
-        </span>
-        <span v-else :class="cursor">
-            <img :src="image"/>
-            <header class="list-title">{{title}}</header>
         </span>
     </li>
 </template>
@@ -28,7 +24,7 @@ import {assert, externalUrl} from '../tools';
 @Options({})
 export default class ListItem extends Vue {
     @Prop({required: true}) title: string | undefined
-    @Prop({default:""}) url!: string
+    @Prop({default:""}) to!: string
     @Prop({default:""}) target!: string
     @Prop({default:""}) image!: string
     @Prop({default: false}) direct!: boolean
@@ -36,16 +32,8 @@ export default class ListItem extends Vue {
     externalUrl = externalUrl
     cursor = "";
 
-    created(){
-        assert((this.$parent as any).listImages, null, "ListItem must be placed inside a ListGroup.");
-        assert((this.$parent as any).listImages, undefined, "ListItem must be placed inside a ListGroup.");
-        assert(this.title, undefined, `ListItem missing 'title' attribute.`);
-
-        (this.$parent as any).listImages.push(this.image)
-    }
-
     beforeMount(){
-        if (!this.url){
+        if (!this.to){
             this.cursor = "default-cursor";
         }
     }
