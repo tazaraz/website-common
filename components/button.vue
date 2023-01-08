@@ -5,9 +5,9 @@
         :value="value"
         :class="`common-button ${prim}`"
     />
-    <Url v-else :to="to" :direct="direct" :to-root="toRoot" :target="target" :classes="`common-button ${prim}`">{{
-        value
-    }}</Url>
+    <Url v-else :to="to" :direct="direct" :to-root="toRoot" :target="target" :classes="`common-button ${prim}`">
+        <slot></slot>
+    </Url>
 </template>
 
 <script lang="ts">
