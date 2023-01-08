@@ -1,7 +1,7 @@
 <template>
-    <div class="slider">
+    <span class="slider">
         <input type="range" :min="min" :max="max" :value="value" @input="emit">
-    </div>
+    </span>
 </template>
 
 <script lang="ts">
