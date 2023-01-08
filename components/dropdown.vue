@@ -27,9 +27,9 @@ export default class Dropdown extends Vue {
         if (event.target && (event.target as HTMLLIElement).matches("li")) {
             // If the dropdown menu is open
             if (this.isOpen) {
-                this.closeDropdown(event);
+                this.close(event);
             } else {
-                this.openDropdown();
+                this.open();
             }
         }
 
@@ -54,7 +54,7 @@ export default class Dropdown extends Vue {
                         (event.target as HTMLElement).parentNode?.parentNode !== element.items &&
                         (event.target as HTMLElement).parentNode?.parentNode?.parentNode !== element.items) ||
                         event === undefined)) {
-                        element.closeDropdown();
+                        element.close();
                     }
                 });
             })
@@ -113,7 +113,7 @@ export default class Dropdown extends Vue {
         this.items.children[this.selected].classList.add("selected");
     }
 
-    public closeDropdown(event: Event | undefined = undefined){
+    public close(event: Event | undefined = undefined){
         this.selected = this.selected > this.items.children.length - 1 ? 0 : this.selected;
 
         // Find the id of the element clicked
@@ -147,7 +147,7 @@ export default class Dropdown extends Vue {
             this.$emit('close')
     }
 
-    public openDropdown(){
+    public open(){
         // Save the original position of the dropdown
         const oldBoundingBox = (this.$el as HTMLElement).getBoundingClientRect();
 
